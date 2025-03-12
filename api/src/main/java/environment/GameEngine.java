@@ -31,7 +31,6 @@ import Action.SlidingDirection;
 
 public class GameEngine {
 
-  private static Scanner keyboard = new Scanner(System.in);
   private final PuzzleMatrix puzzle;
   private static CurrentPosition currentPosition;
 
@@ -47,20 +46,15 @@ public class GameEngine {
    *
    */
   public void play() {
-    if (this.puzzle.size < 0) {
-      throw new IllegalSizeMatrixException("Puzzle size must be greater than zero");
-    }
-    while (true) {
-      keyboard = new Scanner(System.in);
+    Scanner keyboard = new Scanner(System.in);
+    do {
       printBoard();
-      ExchangePosition(stringToDirection(keyboard));
-      if (isSolved(this.puzzle)) {
-        System.out.println("YOU ARE WIN!!");
-        break;
-      }
-    }
+      SwapPosition(stringToDirection(keyboard));
+    } while(!isSolved(this.puzzle));
+
     keyboard.close();
   }
+
 
   /**
    * This method converted an Object <code> keyboard </code>
@@ -72,6 +66,7 @@ public class GameEngine {
   private SlidingDirection stringToDirection(Scanner keyboard) {
     if(keyboard == null) throw new NullPointerException("keyboard is null");
     String direction = keyboard.nextLine().toUpperCase();
+
     return SlidingDirection.valueOf(direction);
   }
 
@@ -81,24 +76,17 @@ public class GameEngine {
    *
    * @param direction the relative direction
    */
-  private void ExchangePosition(SlidingDirection direction) {
+  private void SwapPosition(SlidingDirection direction) {
     try {
-      Position isValid = currentPosition.move(direction); // Ottiene la nuova posizione della cella vuota
+      Position position = currentPosition.move(direction);
 
-      int currentRow = currentPosition.getRow();
-      int currentCol = currentPosition.getCol();
+      this.puzzle.setValue(currentPosition.getRow(), currentPosition.getCol(),
+              this.puzzle.getValue(position.getRow(), position.getCol()));
+      this.puzzle.setValue(position.getRow(),
+              position.getCol(), 0);
 
-      int newRow = isValid.getRow();
-      int newCol = isValid.getCol();
-
-      // Scambia il valore della casella vuota con la casella selezionata
-      int temp = this.puzzle.getValue(newRow, newCol);
-      this.puzzle.setValue(newRow, newCol, 0); // La nuova posizione diventa vuota
-      this.puzzle.setValue(currentRow, currentCol, temp); // La vecchia posizione prende il numero spostato
-
-      // Aggiorna la posizione corrente della cella vuota
-      currentPosition = (CurrentPosition) isValid;
-
+      // Update the current position of the empty cell
+      currentPosition = (CurrentPosition) position;
     } catch (IllegalArgumentException e) {
       System.out.println("Invalid move!");
     }

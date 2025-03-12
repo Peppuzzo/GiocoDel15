@@ -10,8 +10,7 @@ public abstract class SetPuzzleMatrix {
 
 
   public SetPuzzleMatrix(int size, int[][] matrix) {
-    if (size < 1)
-      throw new IllegalArgumentException("La matrice non può essere più piccola di 1");
+    if (size < 1) throw new IllegalArgumentException("La matrice non può essere più piccola di 1");
     this.size = size;
     this.matrix = matrix;
     initializeBoard();
