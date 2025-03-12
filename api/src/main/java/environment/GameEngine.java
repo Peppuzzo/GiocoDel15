@@ -31,6 +31,7 @@ import Action.SlidingDirection;
 
 public class GameEngine {
 
+  private static Scanner keyboard = new Scanner(System.in);
   private final PuzzleMatrix puzzle;
   private static CurrentPosition currentPosition;
 
@@ -45,32 +46,33 @@ public class GameEngine {
    * Selective game start
    *
    */
-  public void play(){
-    if(this.puzzle.size < 0){
+  public void play() {
+    if (this.puzzle.size < 0) {
       throw new IllegalSizeMatrixException("Puzzle size must be greater than zero");
     }
-
-    Scanner keyboard = new Scanner(System.in);
-
-    while(true){
+    while (true) {
+      keyboard = new Scanner(System.in);
       printBoard();
-      if(isSolved(this.puzzle)){
+      ExchangePosition(stringToDirection(keyboard));
+      if (isSolved(this.puzzle)) {
         System.out.println("YOU ARE WIN!!");
         break;
       }
-
-      System.out.print("Enter move (UP, DOWN, LEFT, RIGHT) or 'exit' to end: ");
-
-      String direction = keyboard.nextLine().toUpperCase();
-
-      if(direction.equals("EXIT")) break;
-
-      // Convert the string to the enum
-      SlidingDirection d = SlidingDirection.valueOf(direction);
-
-      ExchangePosition(d);
     }
     keyboard.close();
+  }
+
+  /**
+   * This method converted an Object <code> keyboard </code>
+   * in a direction
+   *
+   * @param keyboard The object to be converted
+   * @return The string as input
+   */
+  private SlidingDirection stringToDirection(Scanner keyboard) {
+    if(keyboard == null) throw new NullPointerException("keyboard is null");
+    String direction = keyboard.nextLine().toUpperCase();
+    return SlidingDirection.valueOf(direction);
   }
 
 
@@ -148,5 +150,6 @@ public class GameEngine {
       System.out.println("|");
       System.out.println("-----------------");
     }
+    System.out.print("Enter move (UP, DOWN, LEFT, RIGHT) or 'exit' to end: ");
   }
 }

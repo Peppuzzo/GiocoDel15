@@ -42,5 +42,4 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
     this.matrix[row][col] = value;
   }
 
-
 }
