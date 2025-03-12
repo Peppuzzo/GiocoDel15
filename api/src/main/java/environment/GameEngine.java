@@ -138,6 +138,6 @@ public class GameEngine {
       System.out.println("|");
       System.out.println("-----------------");
     }
-    System.out.print("Enter move (UP, DOWN, LEFT, RIGHT) or 'exit' to end: ");
+    System.out.print("Enter move (UP, DOWN, LEFT, RIGHT)");
   }
 }
