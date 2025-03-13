@@ -29,6 +29,16 @@ public class PuzzleValidator {
   private static final int DEFAULT_SIZE = 16;
   private static int[] line;
 
+
+  /**
+   * This method set the size for array line
+   *
+   */
+  private static void setDefaultSize(){
+    line = new int[DEFAULT_SIZE];
+  }
+
+
   public static void lineMatrixNumber(int[][] puzzle){
     setDefaultSize();
     int index = 0;
@@ -42,14 +52,21 @@ public class PuzzleValidator {
     }
   }
 
+
   /**
-   * This method set a size default with a constant
-   *     <code> DEFAULT_SIZE </code>
+   * This method calculate the number of inversion
    *
+   * @return the number of inversion
    */
-  private static void setDefaultSize(){
-    line = new int[DEFAULT_SIZE];
+  public static int calculateInversions(int[] ln){
+    int inversions = 0;
+
+
+    return inversions;
   }
+
+
+
 
 
 
