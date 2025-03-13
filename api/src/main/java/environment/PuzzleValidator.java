@@ -26,13 +26,16 @@ package environment;
 
 public class PuzzleValidator {
 
-  public static void lineMatrixNumber(int[][] puzzle){
-    int[] number = new int[puzzle.length * puzzle.length];
+  private static final int DEFAULT_SIZE = 16;
 
-    for(int i = 0; i < puzzle.length; i++){
-      for(int j = 0; j < puzzle.length; j++){
-        if(puzzle[i][j] != 0){
-          number[i] = puzzle[i][j];
+  public static void lineMatrixNumber(int[][] puzzle){
+    int[] number = new int[DEFAULT_SIZE];
+    int index = 0;
+
+    for (int[] e : puzzle) {
+      for (int j = 0; j < puzzle.length; j++) {
+        if (e[j] != 0) {
+          number[index++] = e[j];
         }
       }
     }
