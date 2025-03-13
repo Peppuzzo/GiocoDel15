@@ -27,18 +27,32 @@ package environment;
 public class PuzzleValidator {
 
   private static final int DEFAULT_SIZE = 16;
+  private static int[] line;
 
   public static void lineMatrixNumber(int[][] puzzle){
-    int[] number = new int[DEFAULT_SIZE];
+    setDefaultSize();
     int index = 0;
 
     for (int[] e : puzzle) {
       for (int j = 0; j < puzzle.length; j++) {
         if (e[j] != 0) {
-          number[index++] = e[j];
+          line[index++] = e[j];
         }
       }
     }
   }
+
+  /**
+   * This method set a size default with a constant
+   *     <code> DEFAULT_SIZE </code>
+   *
+   */
+  private static void setDefaultSize(){
+    line = new int[DEFAULT_SIZE];
+  }
+
+
+
+
 
 }
