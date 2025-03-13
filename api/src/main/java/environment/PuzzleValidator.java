@@ -26,7 +26,7 @@ package environment;
 
 public class PuzzleValidator {
 
-  public static void countInversions(int[][] puzzle){
+  public static void lineMatrixNumber(int[][] puzzle){
     int[] number = new int[puzzle.length * puzzle.length];
 
     for(int i = 0; i < puzzle.length; i++){
@@ -36,7 +36,6 @@ public class PuzzleValidator {
         }
       }
     }
-
   }
 
 }
