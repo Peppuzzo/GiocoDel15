@@ -95,16 +95,7 @@ public class GameEngine {
     }
   }
 
-
-  /**
-   * Determines whether the game is in a solved state
-   *
-   * @param puzzle The current game
-   * @return if the game is solved
-   */
-
-
-
+  
   /**
    * Print the Puzzle game.
    *
