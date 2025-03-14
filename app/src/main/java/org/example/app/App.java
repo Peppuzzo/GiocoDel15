@@ -7,12 +7,11 @@ import validator.PuzzleValidate;
 
 public class App {
   public static void main(String[] args) {
-    PuzzleMatrix puzzle = new PuzzleMatrix(2, new int[2][2]);
+
+    PuzzleMatrix puzzle = new PuzzleMatrix(2);
     PuzzleValidate val = new DefaultValidator();
     GameEngine game = new GameEngine(puzzle, val);
 
     game.play();
-
-
   }
 }

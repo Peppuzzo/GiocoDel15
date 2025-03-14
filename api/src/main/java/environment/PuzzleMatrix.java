@@ -6,20 +6,24 @@ import java.util.List;
 
 public class PuzzleMatrix extends SetPuzzleMatrix {
 
-  public PuzzleMatrix(int size, int[][] board) {
-    super(size, board);
+  private int[][] matrix;
+
+  public PuzzleMatrix(int size) {
+    super(size);
   }
 
 
+  @Override
   protected void initializeBoard(){
     List<Integer> numbers = generateRandomNumbers();
-    Collections.shuffle(numbers); // per rimescolare i numeri in modo casuale
+    Collections.shuffle(numbers); // to shuffle numbers randomly
     fillBoard(numbers);
   }
 
 
+  @Override
   protected void fillBoard(List<Integer> numbers){
-    // la prima cella è sempre vuota
+    // the first cell is always empty
     this.matrix[0][0] = 0;
     int index = 0;
 
@@ -32,6 +36,7 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
   }
 
 
+  @Override
   public List<Integer> generateRandomNumbers() {
     List<Integer> numbers = new ArrayList<>();
     for (int i = 1; i < size * size; i++) {
@@ -40,18 +45,31 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
     return numbers;
   }
 
-  public int[][] getMatrix(){return this.matrix;}
 
+  @Override
+  public int[][] getMatrix() {
+    return this.matrix;
+  }
+
+  @Override
   public int getSize(){
     return this.matrix.length;
   }
 
+  @Override
+  protected void setSize(int size){
+    this.matrix = new int[size][size];
+  }
+
+  @Override
   public int getValue(int row, int column){
     return this.matrix[row][column];
   }
 
+  @Override
   protected void setValue(int row, int col, int value){
     this.matrix[row][col] = value;
   }
+
 
 }

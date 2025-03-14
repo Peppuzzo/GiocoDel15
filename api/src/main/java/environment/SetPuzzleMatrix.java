@@ -1,79 +1,82 @@
 package environment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SetPuzzleMatrix {
 
   protected final int size;
-  protected final int[][] matrix;
 
-
-  public SetPuzzleMatrix(int size, int[][] matrix) {
-    if (size < 1) throw new IllegalArgumentException("La matrice non può essere più piccola di 1");
+  public SetPuzzleMatrix(int size) {
+    if (size < 1) throw new IllegalArgumentException("The matrix cannot be smaller than 1");
     this.size = size;
-    this.matrix = matrix;
+    setSize(size);
     initializeBoard();
   }
 
 
   /**
-   * Metodo per generare i numeri casuali (da 1 a 15) per
-   * tutta la matrice, tranne nella prima posizione
+   * Method to generate random numbers (from 1 to 15) for
+   *        the entire matrix, except in the first position
    *
-   * @return la lista con numeri casuali da 1 a 15
+   * @return the list with random numbers from 1 to 15
    */
   protected abstract List<Integer> generateRandomNumbers();
 
 
   /**
-   * Metodo per leggere il dato contenuto in una determinata riga e colonna.
+   * This method get a matrix
    *
-   * @param row la riga della matrice
-   * @param col la colonna della matrice
-   * @return il valore contenuto nella matrice
+   * @return get a matrix
    */
-  public abstract int getValue(int row, int col);
+  public abstract int[][] getMatrix();
 
 
   /**
-   * Setta il valore in una posizione della matrice
+   * Method to read the data contained in a given row and column.
    *
-   * @param row la riga da dover settare
-   * @param col la colonna da dover settare
-   * @param value il valore settato nella matrice
+   * @param row the row of the matrix
+   * @param col the column of the matrix
+   * @return the value contained in the matrix
+   */
+  public abstract int getValue(int row, int col);
+
+  /**
+   * Sets the value in a position of the matrix
+   *
+   * @param row the row to be set
+   * @param col the column to be set
+   * @param value the value set in the matrix
    */
   protected abstract void setValue(int row, int col, int value);
 
 
   /**
-   * Determina la lunghezza della matrice
+   * This method set the size for matrix
    *
-   * @return la lunghezza della matrice
+   * @param size the size for matrix
+   */
+  protected abstract void setSize(int size);
+
+  /**
+   * Determines the length of the array
+   *
+   * @return the length of the array
    */
   public abstract int getSize();
 
 
+
   /**
-   * Inizializza la matrice di gioco
+   * Initializes the game array
    */
   protected abstract void initializeBoard();
 
-
   /**
-   * Metodo per inizializzare la matrice con num.
-   *        casuali (tranne nella prima posizione)
+   * Method to initialize the array with random
+   *        numbers (except in the first position)
    *
-   * @param numbers <code> List </code> di numeri random
+   * @param numbers <code> List </code> of random numbers
    */
   protected abstract void fillBoard(List<Integer> numbers);
-
-
-  /**
-   * Method to read the game representation matrix
-   *
-   * @return read the game representation matrix
-   */
-  protected int[][] getMatrix() { return matrix; }
 
 }

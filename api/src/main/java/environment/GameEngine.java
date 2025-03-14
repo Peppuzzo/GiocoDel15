@@ -95,7 +95,7 @@ public class GameEngine {
     }
   }
 
-  
+
   /**
    * Print the Puzzle game.
    *
@@ -105,9 +105,9 @@ public class GameEngine {
     for (int[] value : this.puzzle.getMatrix()) {
       for (int i : value) {
         if (i == 0) {
-          System.out.print("|   "); // Casella vuota
+          System.out.print("|   "); // empty box
         } else {
-          System.out.printf("|%2d ", i); // Stampa numeri con formato allineato
+          System.out.printf("|%2d ", i);
         }
       }
       System.out.println("|");
