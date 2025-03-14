@@ -1,5 +1,6 @@
 package environment;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,6 +31,17 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
     }
   }
 
+
+  public List<Integer> generateRandomNumbers() {
+    List<Integer> numbers = new ArrayList<>();
+    for (int i = 1; i < size * size; i++) {
+      numbers.add(i);
+    }
+    return numbers;
+  }
+
+  public int[][] getMatrix(){return this.matrix;}
+
   protected int getSize(){
     return this.matrix.length;
   }
@@ -41,7 +53,5 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
   protected void setValue(int row, int col, int value){
     this.matrix[row][col] = value;
   }
-
-  public int[][] getMatrix(){return this.matrix;}
 
 }

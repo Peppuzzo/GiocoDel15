@@ -31,11 +31,11 @@ import Action.SlidingDirection;
 
 public class GameEngine {
 
-  private final PuzzleMatrix puzzle;
-  private static CurrentPosition currentPosition;
+  private final SetPuzzleMatrix puzzle;
+  private static Position currentPosition;
 
 
-  public GameEngine(PuzzleMatrix game) {
+  public GameEngine(SetPuzzleMatrix game) {
     this.puzzle = game;
     currentPosition = new CurrentPosition(0, 0, puzzle.getSize());
   }
@@ -99,7 +99,7 @@ public class GameEngine {
    * @param puzzle The current game
    * @return if the game is solved
    */
-  public boolean isSolved(PuzzleMatrix puzzle) {
+  public boolean isSolved(SetPuzzleMatrix puzzle) {
     int expected = 1;
 
     if(puzzle.size < 2){

@@ -23,13 +23,7 @@ public abstract class SetPuzzleMatrix {
    *
    * @return la lista con numeri casuali da 1 a 15
    */
-  public List<Integer> generateRandomNumbers() {
-    List<Integer> numbers = new ArrayList<>();
-    for (int i = 1; i < size * size; i++) {
-      numbers.add(i);
-    }
-    return numbers;
-  }
+  protected abstract List<Integer> generateRandomNumbers();
 
 
   /**
@@ -73,6 +67,7 @@ public abstract class SetPuzzleMatrix {
    * @param numbers <code> List </code> di numeri random
    */
   protected abstract void fillBoard(List<Integer> numbers);
+
 
   /**
    * Method to read the game representation matrix

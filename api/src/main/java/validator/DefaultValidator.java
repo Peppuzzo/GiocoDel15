@@ -22,54 +22,10 @@
  * SOFTWARE.
  */
 
-package environment;
+package validator;
 
-public class PuzzleValidator {
+public class DefaultValidator implements PuzzleValidate {
 
-  private static final int DEFAULT_SIZE = 16;
-  private static int[] line;
-
-
-  /**
-   * This method set the size for array line
-   *
-   */
-  private static void setDefaultSize(){
-    line = new int[DEFAULT_SIZE];
-  }
-
-
-  public static void lineMatrixNumber(int[][] puzzle){
-    setDefaultSize();
-    int index = 0;
-
-    for (int[] e : puzzle) {
-      for (int j = 0; j < puzzle.length; j++) {
-        if (e[j] != 0) {
-          line[index++] = e[j];
-        }
-      }
-    }
-  }
-
-
-  /**
-   * This method calculate the number of inversion
-   *
-   * @return the number of inversion
-   */
-  public static int calculateInversions(int[] ln){
-    int inversions = 0;
-
-
-    return inversions;
-  }
-
-
-
-
-
-
-
+  public boolean isSolvable() {return true;}
 
 }
