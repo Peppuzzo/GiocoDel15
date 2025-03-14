@@ -42,11 +42,11 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
 
   public int[][] getMatrix(){return this.matrix;}
 
-  protected int getSize(){
+  public int getSize(){
     return this.matrix.length;
   }
 
-  protected int getValue(int row, int column){
+  public int getValue(int row, int column){
     return this.matrix[row][column];
   }
 

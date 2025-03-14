@@ -24,13 +24,16 @@
 
 package validator;
 
+import environment.SetPuzzleMatrix;
+
 public interface PuzzleValidate {
 
   /**
    * Determinate if game is solvable
    *
+   * @param puzzle the puzzle to be validated
    * @return <code> TRUE </code> if game is solvable
    *         <code> FALSE </code> otherwise
    */
-  boolean isSolvable();
+  boolean isSolvable(SetPuzzleMatrix puzzle);
 }

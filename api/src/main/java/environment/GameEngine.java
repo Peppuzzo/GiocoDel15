@@ -28,15 +28,18 @@ import java.util.Scanner;
 import Action.CurrentPosition;
 import Action.Position;
 import Action.SlidingDirection;
+import validator.PuzzleValidate;
 
 public class GameEngine {
 
   private final SetPuzzleMatrix puzzle;
   private static Position currentPosition;
+  private final PuzzleValidate puzzleValidate;
 
 
-  public GameEngine(SetPuzzleMatrix game) {
+  public GameEngine(SetPuzzleMatrix game, PuzzleValidate puzzleValidate) {
     this.puzzle = game;
+    this.puzzleValidate = puzzleValidate;
     currentPosition = new CurrentPosition(0, 0, puzzle.getSize());
   }
 
@@ -50,7 +53,7 @@ public class GameEngine {
     do {
       printBoard();
       SwapPosition(stringToDirection(keyboard));
-    } while(!isSolved(this.puzzle));
+    } while(!this.puzzleValidate.isSolvable(puzzle));
 
     keyboard.close();
   }
@@ -99,26 +102,7 @@ public class GameEngine {
    * @param puzzle The current game
    * @return if the game is solved
    */
-  public boolean isSolved(SetPuzzleMatrix puzzle) {
-    int expected = 1;
 
-    if(puzzle.size < 2){
-      System.out.println("Puzzle size is too small");
-      return false;
-    }
-
-    for(int i = 0; i < puzzle.getSize(); i++) {
-      for(int j = 0; j < puzzle.getSize(); j++) {
-        if(i == this.puzzle.getSize() - 1 && j == this.puzzle.getSize() - 1){
-          return puzzle.getValue(j, i) == 0;
-        }
-        if(puzzle.getValue(i, j) != expected++) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
 
 
   /**

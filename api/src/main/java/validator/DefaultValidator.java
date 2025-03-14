@@ -24,8 +24,31 @@
 
 package validator;
 
+import environment.SetPuzzleMatrix;
+
 public class DefaultValidator implements PuzzleValidate {
 
-  public boolean isSolvable() {return true;}
+  @Override
+  public boolean isSolvable(SetPuzzleMatrix puzzle) {
+    int expected = 1;
+
+    if(puzzle.getSize() < 2){
+      System.out.println("Puzzle size is too small");
+      return false;
+    }
+
+    for(int i = 0; i < puzzle.getSize(); i++) {
+      for(int j = 0; j < puzzle.getSize(); j++) {
+        if(i == puzzle.getSize() - 1 && j == puzzle.getSize() - 1){
+          return puzzle.getValue(j, i) == 0;
+        }
+        if(puzzle.getValue(i, j) != expected++) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
 
 }

@@ -33,7 +33,7 @@ public abstract class SetPuzzleMatrix {
    * @param col la colonna della matrice
    * @return il valore contenuto nella matrice
    */
-  protected abstract int getValue(int row, int col);
+  public abstract int getValue(int row, int col);
 
 
   /**
@@ -51,7 +51,7 @@ public abstract class SetPuzzleMatrix {
    *
    * @return la lunghezza della matrice
    */
-  protected abstract int getSize();
+  public abstract int getSize();
 
 
   /**

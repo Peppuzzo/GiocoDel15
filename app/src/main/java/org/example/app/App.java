@@ -2,13 +2,15 @@ package org.example.app;
 
 import environment.GameEngine;
 import environment.PuzzleMatrix;
-import environment.PuzzleValidator1;
+import validator.DefaultValidator;
+import validator.PuzzleValidate;
 
 public class App {
   public static void main(String[] args) {
-    PuzzleMatrix puzzle = new PuzzleMatrix(4, new int[4][4]);
-    GameEngine game = new GameEngine(puzzle);
-    PuzzleValidator1.lineMatrixNumber(puzzle.getMatrix());
+    PuzzleMatrix puzzle = new PuzzleMatrix(2, new int[2][2]);
+    PuzzleValidate val = new DefaultValidator();
+    GameEngine game = new GameEngine(puzzle, val);
+
     game.play();
 
 
