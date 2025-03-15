@@ -26,6 +26,8 @@ package validator;
 
 import environment.SetPuzzleMatrix;
 
+//TODO: Fix any methods for solving the game, complete accordingly
+
 /**
  * This class is responsible for implementing the
  *      default puzzle solution, according to the Wikipedia guide.

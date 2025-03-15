@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package Action;
+package action;
 
 public class IllegalDirectionException extends RuntimeException {
   public IllegalDirectionException(String message) {

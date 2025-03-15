@@ -22,30 +22,11 @@
  * SOFTWARE.
  */
 
-package Action;
+package action;
 
-public interface Position {
-
-  /**
-   * Moves the current position in a specific direction
-   *
-   * @param dir the actual direction of movement
-   * @return the new move in the grid
-   */
-  Position move(SlidingDirection dir);
-
-  /**
-   * Gets the row of the current position
-   *
-   * @return the row at that position
-   */
-  int getRow();
-
-  /**
-   * Gets the column of the current position
-   *
-   * @return the column at that position
-   */
-  int getCol();
-
+public enum SlidingDirection {
+  UP,
+  DOWN,
+  LEFT,
+  RIGHT
 }

@@ -25,17 +25,17 @@
 package environment;
 
 import java.util.Scanner;
-import Action.CurrentPosition;
-import Action.Position;
-import Action.SlidingDirection;
+import action.CurrentPosition;
+import action.Position;
+import action.SlidingDirection;
 import validator.PuzzleValidate;
 
+//TODO: Arrange methods to only use get and throw exceptions
 public class GameEngine {
 
   private final SetPuzzleMatrix puzzle;
   private static Position currentPosition;
   private final PuzzleValidate puzzleValidate;
-
 
   public GameEngine(SetPuzzleMatrix game, PuzzleValidate puzzleValidate) {
     this.puzzle = game;
@@ -105,7 +105,7 @@ public class GameEngine {
     for (int[] value : this.puzzle.getMatrix()) {
       for (int i : value) {
         if (i == 0) {
-          System.out.print("|   "); // empty box
+          System.out.print("|   " ); // empty box
         } else {
           System.out.printf("|%2d ", i);
         }

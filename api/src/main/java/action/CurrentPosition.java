@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package Action;
+package action;
 
 /**
  * This responsibility is presentation the next position
@@ -48,8 +48,11 @@ public class CurrentPosition implements Position {
    *
    * @param direction la direzione effettiva del movimento
    * @return the new position current
+   *
+   * @throws IllegalDirectionException if the direction not valid
    */
   @Override
+  //TODO: Fix the method in case a direction is null, or is invalid
   public Position move(SlidingDirection direction){
     switch (direction){
       case UP:
