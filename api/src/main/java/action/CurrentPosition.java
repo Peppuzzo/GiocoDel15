@@ -43,14 +43,6 @@ public class CurrentPosition implements Position {
   }
 
 
-  /**
-   * This method calculate the next position of presentation
-   *
-   * @param direction la direzione effettiva del movimento
-   * @return the new position current
-   *
-   * @throws IllegalDirectionException if the direction not valid
-   */
   @Override
   //TODO: Fix the method in case a direction is null, or is invalid
   public Position move(SlidingDirection direction){
@@ -71,20 +63,9 @@ public class CurrentPosition implements Position {
   }
 
 
-  /**
-   * Read the current row in a determinate position
-   *
-   * @return the current row in a determinate position
-   */
   @Override
   public int getRow() { return this.row;}
 
-
-  /**
-   * Read the current column in a determinate position
-   *
-   * @return the current column in a determinate position
-   */
   @Override
   public int getCol() { return this.column;}
 

@@ -79,13 +79,16 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
     return this.matrix;
   }
 
+
   @Override
-  public int getSize(){
-    return this.matrix.length;
+  public int getSize() {
+    return this.size;
   }
 
   @Override
   protected void setSize(int size){
+    if(this.getSize() != 4)
+      throw new IllegalSizeMatrixException("The length of matrix not is valid.");
     this.matrix = new int[size][size];
   }
 
@@ -96,6 +99,8 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
 
   @Override
   protected void setValue(int row, int col, int value){
+    if(row < 0 || col < 0 || value < 0)
+      throw new IllegalSizeMatrixException("The row or the column number is invalid.");
     this.matrix[row][col] = value;
   }
 

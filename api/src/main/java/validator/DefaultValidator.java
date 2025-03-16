@@ -24,16 +24,17 @@
 
 package validator;
 
+import environment.IllegalSizeMatrixException;
 import environment.SetPuzzleMatrix;
 
-//TODO: Fix any methods for solving the game, complete accordingly
+// TODO: Fix any methods for solving the game, complete accordingly
 
 /**
  * This class is responsible for implementing the
  *      default puzzle solution, according to the Wikipedia guide.
  * <p>
  * The solution guide for the game can be found at the following link:
- *     @see <a href="https://it.wikipedia.org/wiki/Gioco_del_quindici">Wikipedia - Gioco del quindici</a>
+ *     @see <a href="https://it.wikipedia.org/wiki/Gioco_del_quindici">Wikipedia - Gioco del quindici </a>
  */
 public class DefaultValidator implements PuzzleValidate {
 
@@ -51,6 +52,9 @@ public class DefaultValidator implements PuzzleValidate {
 
 
   public static void lineMatrixNumber(int[][] puzzle){
+    if(puzzle.length == 0){
+      throw new IllegalSizeMatrixException("Puzzle is empty");
+    }
     setDefaultSize();
     int index = 0;
     for (int[] e : puzzle) {
@@ -64,11 +68,11 @@ public class DefaultValidator implements PuzzleValidate {
 
 
   /**
-   * This method calculate the number of inversion
+   * This method count the number of inversion
    *
    * @return the number of inversion
    */
-  protected static int calculateInversions(int[] ln){
+  private static int countInversions(int[] ln){
     int inversions = 0;
 
 

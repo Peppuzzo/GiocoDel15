@@ -27,10 +27,12 @@ package action;
 public interface Position {
 
   /**
-   * Moves the current position in a specific direction
+   * This method calculate the next position of presentation
    *
-   * @param dir the actual direction of movement
-   * @return the new move in the grid
+   * @param dir la direzione effettiva del movimento
+   * @return the new position current
+   *
+   * @throws IllegalDirectionException if the direction not valid
    */
   Position move(SlidingDirection dir);
 

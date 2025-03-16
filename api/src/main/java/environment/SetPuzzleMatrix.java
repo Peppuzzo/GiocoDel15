@@ -44,7 +44,7 @@ public abstract class SetPuzzleMatrix {
    *
    * @return the list with random numbers from 1 to 15
    */
-  protected abstract List<Integer> generateRandomNumbers();
+  public abstract List<Integer> generateRandomNumbers();
 
 
   /**
@@ -70,24 +70,26 @@ public abstract class SetPuzzleMatrix {
    * @param row the row to be set
    * @param col the column to be set
    * @param value the value set in the matrix
+   *              @throws IllegalSizeMatrixException if the value not valid
    */
   protected abstract void setValue(int row, int col, int value);
+
+
+  /**
+   * This method return the size of matrix.
+   *
+   * @return the size of matrix.
+   */
+  public abstract int getSize();
 
 
   /**
    * This method set the size for matrix
    *
    * @param size the size for matrix
+   * @throws IllegalSizeMatrixException if the zie of matrix not is four
    */
   protected abstract void setSize(int size);
-
-  /**
-   * Determines the length of the array
-   *
-   * @return the length of the array
-   */
-  public abstract int getSize();
-
 
 
   /**
@@ -100,6 +102,7 @@ public abstract class SetPuzzleMatrix {
    *        numbers (except in the first position)
    *
    * @param numbers <code> List </code> of random numbers
+   * @throws IllegalSizeMatrixException if the size of matrix is empty
    */
   protected abstract void fillBoard(List<Integer> numbers);
 

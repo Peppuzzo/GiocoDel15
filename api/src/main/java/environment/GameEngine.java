@@ -31,6 +31,7 @@ import action.SlidingDirection;
 import validator.PuzzleValidate;
 
 //TODO: Arrange methods to only use get and throw exceptions
+//TODO: Separating concepts with position swap
 public class GameEngine {
 
   private final SetPuzzleMatrix puzzle;
@@ -87,9 +88,6 @@ public class GameEngine {
               this.puzzle.getValue(position.getRow(), position.getCol()));
       this.puzzle.setValue(position.getRow(),
               position.getCol(), 0);
-
-      // Update the current position of the empty cell
-      currentPosition = (CurrentPosition) position;
     } catch (IllegalArgumentException e) {
       System.out.println("Invalid move!");
     }
@@ -105,7 +103,7 @@ public class GameEngine {
     for (int[] value : this.puzzle.getMatrix()) {
       for (int i : value) {
         if (i == 0) {
-          System.out.print("|   " ); // empty box
+          System.out.print("|   " );
         } else {
           System.out.printf("|%2d ", i);
         }
