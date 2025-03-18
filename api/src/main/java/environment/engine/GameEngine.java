@@ -22,12 +22,13 @@
  * SOFTWARE.
  */
 
-package environment;
+package environment.engine;
 
 import java.util.Scanner;
 import action.CurrentPosition;
 import action.Position;
 import action.SlidingDirection;
+import environment.setup.SetPuzzleMatrix;
 import validator.PuzzleValidate;
 
 //TODO: Arrange methods to only use get and throw exceptions

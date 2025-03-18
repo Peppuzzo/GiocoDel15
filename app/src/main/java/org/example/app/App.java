@@ -1,7 +1,7 @@
 package org.example.app;
 
-import environment.GameEngine;
-import environment.PuzzleMatrix;
+import environment.engine.GameEngine;
+import environment.setup.PuzzleMatrix;
 import validator.DefaultValidator;
 import validator.PuzzleValidate;
 

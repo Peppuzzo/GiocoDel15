@@ -24,8 +24,8 @@
 
 package validator;
 
-import environment.IllegalSizeMatrixException;
-import environment.SetPuzzleMatrix;
+import utils.IllegalSizeMatrixException;
+import environment.setup.SetPuzzleMatrix;
 
 // TODO: Fix any methods for solving the game, complete accordingly
 
@@ -72,11 +72,10 @@ public class DefaultValidator implements PuzzleValidate {
    *
    * @return the number of inversion
    */
-  private static int countInversions(int[] ln){
+  private static void determinateInversions(int[] ln){
     int inversions = 0;
 
 
-    return inversions;
   }
 
   @Override

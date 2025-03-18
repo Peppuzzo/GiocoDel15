@@ -24,7 +24,7 @@
 
 package validator;
 
-import environment.SetPuzzleMatrix;
+import environment.setup.SetPuzzleMatrix;
 
 public interface PuzzleValidate {
 

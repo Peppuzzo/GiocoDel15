@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-package environment;
+package environment.setup;
+
+import utils.IllegalSizeMatrixException;
 
 import java.util.List;
 
@@ -61,6 +63,7 @@ public abstract class SetPuzzleMatrix {
    * @param row the row of the matrix
    * @param col the column of the matrix
    * @return the value contained in the matrix
+   * @throws IllegalSizeMatrixException if row or the column number is invalid.
    */
   public abstract int getValue(int row, int col);
 
@@ -70,9 +73,9 @@ public abstract class SetPuzzleMatrix {
    * @param row the row to be set
    * @param col the column to be set
    * @param value the value set in the matrix
-   *              @throws IllegalSizeMatrixException if the value not valid
+   * @throws IllegalSizeMatrixException if the value not valid
    */
-  protected abstract void setValue(int row, int col, int value);
+  public abstract void setValue(int row, int col, int value);
 
 
   /**
@@ -96,6 +99,7 @@ public abstract class SetPuzzleMatrix {
    * Initializes the game array
    */
   protected abstract void initializeBoard();
+
 
   /**
    * Method to initialize the array with random

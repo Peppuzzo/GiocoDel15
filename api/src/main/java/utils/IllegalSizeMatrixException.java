@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package environment;
+package utils;
 
 public class IllegalSizeMatrixException extends RuntimeException {
   public IllegalSizeMatrixException(String message) {

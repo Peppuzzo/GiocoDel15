@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-package environment;
+package environment.setup;
+
+import utils.IllegalSizeMatrixException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,11 +96,14 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
 
   @Override
   public int getValue(int row, int column){
+    if(row < 0 || column < 0){
+      throw new IllegalSizeMatrixException("The row or the column number is invalid.");
+    }
     return this.matrix[row][column];
   }
 
   @Override
-  protected void setValue(int row, int col, int value){
+  public void setValue(int row, int col, int value){
     if(row < 0 || col < 0 || value < 0)
       throw new IllegalSizeMatrixException("The row or the column number is invalid.");
     this.matrix[row][col] = value;
