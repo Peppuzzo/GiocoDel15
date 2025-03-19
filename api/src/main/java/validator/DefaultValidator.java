@@ -55,7 +55,7 @@ public class DefaultValidator implements PuzzleValidate {
    * Transform the matrix into a linear array
    *
    * @param puzzle The reference matrix
-   * @throws action.IllegalDirectionException If the length of the matrix is ​​0
+   * @throws IllegalSizeMatrixException If the length of the matrix is 0
    */
   public static void lineMatrixNumber(int[][] puzzle){
     if(puzzle.length == 0){
