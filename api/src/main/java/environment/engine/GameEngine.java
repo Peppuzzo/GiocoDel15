@@ -37,11 +37,11 @@ public class GameEngine {
 
   private final SetPuzzleMatrix puzzle;
   private static Position currentPosition;
-  private final PuzzleValidate puzzleValidate;
+  private final PuzzleValidate validate;
 
-  public GameEngine(SetPuzzleMatrix game, PuzzleValidate puzzleValidate) {
+  public GameEngine(SetPuzzleMatrix game, PuzzleValidate validate) {
     this.puzzle = game;
-    this.puzzleValidate = puzzleValidate;
+    this.validate = validate;
     currentPosition = new CurrentPosition(0, 0, puzzle.getSize());
   }
 
@@ -55,7 +55,7 @@ public class GameEngine {
     do {
       printBoard();
       SwapPosition(stringToDirection(keyboard));
-    } while(!this.puzzleValidate.isSolvable(puzzle));
+    } while(!this.validate.isSolvable(puzzle));
 
     keyboard.close();
   }
@@ -89,6 +89,7 @@ public class GameEngine {
               this.puzzle.getValue(position.getRow(), position.getCol()));
       this.puzzle.setValue(position.getRow(),
               position.getCol(), 0);
+      currentPosition = position; // update position
     } catch (IllegalArgumentException e) {
       System.out.println("Invalid move!");
     }

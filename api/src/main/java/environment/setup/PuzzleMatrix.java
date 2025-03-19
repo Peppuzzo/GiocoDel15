@@ -89,8 +89,8 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
 
   @Override
   protected void setSize(int size){
-    if(this.getSize() != 4)
-      throw new IllegalSizeMatrixException("The length of matrix not is valid.");
+    //if(this.getSize() != 4)
+      //throw new IllegalSizeMatrixException("The length of matrix not is valid.");
     this.matrix = new int[size][size];
   }
 

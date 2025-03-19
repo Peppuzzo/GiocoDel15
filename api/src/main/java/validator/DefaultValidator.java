@@ -27,19 +27,19 @@ package validator;
 import utils.IllegalSizeMatrixException;
 import environment.setup.SetPuzzleMatrix;
 
-// TODO: Fix any methods for solving the game, complete accordingly
 
 /**
  * This class is responsible for implementing the
  *      default puzzle solution, according to the Wikipedia guide.
  * <p>
- * The solution guide for the game can be found at the following link:
+   * A (similar) solution for the game can be found at the following link:
  *     @see <a href="https://it.wikipedia.org/wiki/Gioco_del_quindici">Wikipedia - Gioco del quindici </a>
  */
 public class DefaultValidator implements PuzzleValidate {
 
   private static final int DEFAULT_SIZE = 16;
   private static int[] line;
+  private static int inversion;
 
 
   /**
@@ -51,6 +51,12 @@ public class DefaultValidator implements PuzzleValidate {
   }
 
 
+  /**
+   * Transform the matrix into a linear array
+   *
+   * @param puzzle The reference matrix
+   * @throws action.IllegalDirectionException If the length of the matrix is ​​0
+   */
   public static void lineMatrixNumber(int[][] puzzle){
     if(puzzle.length == 0){
       throw new IllegalSizeMatrixException("Puzzle is empty");
@@ -68,37 +74,22 @@ public class DefaultValidator implements PuzzleValidate {
 
 
   /**
-   * This method count the number of inversion
-   *
-   * @return the number of inversion
+   * This method determines whether there are any inversions
    */
   private static void determinateInversions(int[] ln){
-    int inversions = 0;
-
-
+    for(int i = 0; i < ln.length - 1; i++){
+      if(ln[i] > ln[i+1]){
+        inversion++;
+      }
+    }
   }
+
 
   @Override
   public boolean isSolvable(SetPuzzleMatrix puzzle) {
-    int expected = 1;
-
-    if(puzzle.getSize() < 2){
-      System.out.println("Puzzle size is too small");
-      return false;
-    }
-
-    for(int i = 0; i < puzzle.getSize(); i++) {
-      for(int j = 0; j < puzzle.getSize(); j++) {
-        if(i == puzzle.getSize() - 1 && j == puzzle.getSize() - 1){
-          return puzzle.getValue(j, i) == 0;
-        }
-        if(puzzle.getValue(i, j) != expected++) {
-          return false;
-        }
-      }
-    }
-    return true;
+    lineMatrixNumber(puzzle.getMatrix());
+    determinateInversions(DefaultValidator.line);
+    return inversion % 2 == 0;
   }
-
 
 }
