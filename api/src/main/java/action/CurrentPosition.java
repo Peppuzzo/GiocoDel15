@@ -24,6 +24,10 @@
 
 package action;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * This responsibility is presentation the next position
  */
@@ -32,6 +36,7 @@ public class CurrentPosition implements Position {
   private final int row; // the row where the position is located
   private final int column; // the column where the position is located
   private final int size; // the size of matrix
+  private static final List ArD = Arrays.stream(SlidingDirection.values()).toList();
 
 
   public CurrentPosition(int row, int column, int size){
@@ -46,27 +51,31 @@ public class CurrentPosition implements Position {
   @Override
   //TODO: Fix the method in case a direction is null, or is invalid
   public Position move(SlidingDirection direction){
+
     switch (direction){
-      case UP:
-        if(row > 0) return new CurrentPosition(row - 1, column, size); // Move up
-        else throw new IllegalDirectionException("Invalid direction: " + direction.name());
+      case UP: return new CurrentPosition(row - 1, column, size);
       case DOWN:
-        if(row < size - 1) return new CurrentPosition(row + 1, column, size); // Move down
-        else throw new IllegalDirectionException("Invalid direction: " + direction.name());
+        if(row < size - 1) return new CurrentPosition(row + 1, column, size);
+        break;
       case LEFT:
-        if(column > 0) return new CurrentPosition(row, column - 1, size); // Move left
-        else throw new IllegalDirectionException("Invalid direction: " + direction.name());
+        if(column > 0) return new CurrentPosition(row, column - 1, size);
+        break;
       case RIGHT:
-        if(column < size - 1) return new CurrentPosition(row, column + 1, size); // Move right
+        if(column < size - 1) return new CurrentPosition(row, column + 1, size);
+        break;
     }
-    return null;
+    return this;
   }
 
 
   @Override
-  public int getRow() { return this.row;}
+  public int getRow() {
+    return this.row;
+  }
 
   @Override
-  public int getCol() { return this.column;}
+  public int getCol() {
+    return this.column;
+  }
 
 }

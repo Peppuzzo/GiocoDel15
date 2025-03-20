@@ -32,7 +32,7 @@ public interface Position {
    * @param dir la direzione effettiva del movimento
    * @return the new position current
    *
-   * @throws IllegalDirectionException if the direction not valid
+   * @throws IllegalArgumentException if direction not value
    */
   Position move(SlidingDirection dir);
 

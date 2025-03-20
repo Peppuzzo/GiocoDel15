@@ -81,7 +81,6 @@ public class PuzzleMatrix extends SetPuzzleMatrix {
     return this.matrix;
   }
 
-
   @Override
   public int getSize() {
     return this.size;

@@ -26,6 +26,7 @@ package environment.engine;
 
 import java.util.Scanner;
 import action.CurrentPosition;
+import action.IllegalDirectionException;
 import action.Position;
 import action.SlidingDirection;
 import environment.setup.SetPuzzleMatrix;
@@ -72,7 +73,13 @@ public class GameEngine {
     if(keyboard == null) throw new NullPointerException("keyboard is null");
     String direction = keyboard.nextLine().toUpperCase();
 
-    return SlidingDirection.valueOf(direction);
+    try{
+      return SlidingDirection.valueOf(direction);
+    }
+    catch (Exception e) {
+      throw new IllegalDirectionException("Invalid direction: " + direction);
+    }
+
   }
 
 
@@ -113,6 +120,6 @@ public class GameEngine {
       System.out.println("|");
       System.out.println("-----------------");
     }
-    System.out.print("Enter move (UP, DOWN, LEFT, RIGHT)");
+    System.out.print("Enter move (UP, DOWN, LEFT, RIGHT) ");
   }
 }
