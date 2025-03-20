@@ -57,7 +57,7 @@ public class GameEngine {
       printBoard();
       SwapPosition(stringToDirection(keyboard));
     } while(!this.validate.isSolvable(puzzle));
-
+    System.out.println("\n" + "YOU ARE SOLVED");
     keyboard.close();
   }
 
@@ -68,6 +68,8 @@ public class GameEngine {
    *
    * @param keyboard The object to be converted
    * @return The string as input
+   * @throws NullPointerException if keyboard is null
+   * @throws IllegalDirectionException if the direction is not valid
    */
   private SlidingDirection stringToDirection(Scanner keyboard) {
     if(keyboard == null) throw new NullPointerException("keyboard is null");

@@ -57,7 +57,7 @@ public class DefaultValidator implements PuzzleValidate {
    * @param puzzle The reference matrix
    * @throws IllegalSizeMatrixException If the length of the matrix is 0
    */
-  public static void lineMatrixNumber(int[][] puzzle){
+  private static void lineMatrixNumber(int[][] puzzle){
     if(puzzle.length == 0){
       throw new IllegalSizeMatrixException("Puzzle is empty");
     }

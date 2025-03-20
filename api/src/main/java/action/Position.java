@@ -30,7 +30,8 @@ public interface Position {
    * This method calculate the next position of presentation
    *
    * @param dir la direzione effettiva del movimento
-   * @return the new position current
+   * @return <code> TRUE </code>  If moving between positions is allowed
+   *         <code> FALSE </code> The exact same position
    *
    * @throws IllegalArgumentException if direction not value
    */
