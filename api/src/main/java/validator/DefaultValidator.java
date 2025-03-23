@@ -32,8 +32,8 @@ import environment.setup.SetPuzzleMatrix;
  * This class is responsible for implementing the
  *      default puzzle solution, according to the Wikipedia guide.
  * <p>
-   * A (similar) solution for the game can be found at the following link:
- *     @see <a href="https://it.wikipedia.org/wiki/Gioco_del_quindici">Wikipedia - Gioco del quindici </a>
+ * A (similar) solution for the game can be found at the following link:
+ * @see <a href="https://it.wikipedia.org/wiki/Gioco_del_quindici">Wikipedia - Gioco del quindici </a>
  */
 public class DefaultValidator implements PuzzleValidate {
 

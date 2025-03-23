@@ -24,49 +24,36 @@
 
 package action;
 
-/**
- * This responsibility is presentation the next position
- */
-public class CurrentPosition implements Position {
+import utils.IllegalSizeMatrixException;
 
-  private final int row; // the row where the position is located
-  private final int column; // the column where the position is located
-  private final int size; // the size of matrix
+public record CurrentPosition(int row, int col, int size)  {
 
-  public CurrentPosition(int row, int column, int size){
-    if(row < 0 || column < 0 || size < 0)
-      throw new IllegalArgumentException("Coordinate not value");
-    this.row = row;
-    this.column = column;
-    this.size = size;
+  public CurrentPosition {
+    if(row < 0 || col < 0 || size < 0)
+      throw new IllegalSizeMatrixException("Row and column are negative");
   }
 
 
-  @Override
-  public Position move(SlidingDirection direction){
+  /**
+   * This method calculate the next position of presentation
+   *
+   * @param dir la direzione effettiva del movimento
+   * @return <code> TRUE </code>  If moving between positions is allowed
+   *         <code> FALSE </code> The exact same position
+   */
+  public CurrentPosition move(SlidingDirection dir){
 
-    switch (direction){
-      case UP: if(row > 0) return new CurrentPosition(row - 1, column, size);
+    switch (dir){
+      case UP: if(row > 0) return new CurrentPosition(row - 1, col, size);
 
-      case DOWN: if(row < size - 1) return new CurrentPosition(row + 1, column, size);
+      case DOWN: if(row < size - 1) return new CurrentPosition(row + 1, col, size);
 
-      case LEFT: if(column > 0) return new CurrentPosition(row, column - 1, size);
+      case LEFT: if(col > 0) return new CurrentPosition(row, col - 1, size);
 
       case RIGHT:
-        if(column < size - 1) return new CurrentPosition(row, column + 1, size);
+        if(col < size - 1) return new CurrentPosition(row, col + 1, size);
     }
     return this;
-  }
-
-
-  @Override
-  public int getRow() {
-    return this.row;
-  }
-
-  @Override
-  public int getCol() {
-    return this.column;
   }
 
 }

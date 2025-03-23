@@ -27,17 +27,15 @@ package environment.engine;
 import java.util.Scanner;
 import action.CurrentPosition;
 import action.IllegalDirectionException;
-import action.Position;
 import action.SlidingDirection;
 import environment.setup.SetPuzzleMatrix;
 import validator.PuzzleValidate;
 
-//TODO: Arrange methods to only use get and throw exceptions
 //TODO: Separating concepts with position swap
 public class GameEngine {
 
   private final SetPuzzleMatrix puzzle;
-  private static Position currentPosition;
+  private static CurrentPosition currentPosition;
   private final PuzzleValidate validate;
 
   public GameEngine(SetPuzzleMatrix game, PuzzleValidate validate) {
@@ -92,12 +90,12 @@ public class GameEngine {
    */
   private void SwapPosition(SlidingDirection direction) {
     try {
-      Position position = currentPosition.move(direction);
+      CurrentPosition position = currentPosition.move(direction);
 
-      this.puzzle.setValue(currentPosition.getRow(), currentPosition.getCol(),
-              this.puzzle.getValue(position.getRow(), position.getCol()));
-      this.puzzle.setValue(position.getRow(),
-              position.getCol(), 0);
+      this.puzzle.setValue(currentPosition.row(), currentPosition.row(),
+              this.puzzle.getValue(position.row(), position.row()));
+      this.puzzle.setValue(position.row(),
+              position.row(), 0);
       currentPosition = position; // update position
     } catch (IllegalArgumentException e) {
       System.out.println("Invalid move!");
